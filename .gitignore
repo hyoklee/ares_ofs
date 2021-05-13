@@ -1,0 +1,4 @@
+*.conf
+
+client_nodes
+*_server_nodes
