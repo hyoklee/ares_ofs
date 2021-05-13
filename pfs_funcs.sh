@@ -1,8 +1,24 @@
+function single_pfs_up() {
+    pushd ${PFS_SCRIPTS_DIR}
+    ./prep_client_dirs.sh
+    ./create_config.sh ${1:+sync}
+    ./start_servers.sh
+    ./start_clients.sh
+    popd
+}
+
 function pfs_up() {
     pushd ${PFS_SCRIPTS_DIR}
     ./create_config.sh ${1:+sync}
     ./start_servers.sh
     ./start_clients.sh 1
+    popd
+}
+
+function single_pfs_down() {
+    pushd ${PFS_SCRIPTS_DIR}
+    ./stop_clients.sh
+    ./stop_servers.sh
     popd
 }
 
