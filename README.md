@@ -89,7 +89,6 @@ If you don't need a whole hierarchy, you can start a single PFS as follows.
 
 ```bash
 single_pfs_up
-popd
 ```
 
    You can pass `sync` as a parameter to `single_pfs_up` to set
