@@ -1,4 +1,4 @@
 *.conf
 
 client_nodes
-*_server_nodes
+*server_nodes
