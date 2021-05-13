@@ -73,7 +73,7 @@ hierarchy_up
   (created by the `make_tmpfs.sh` script). A swap directory is created at
   `pfs/swap`, which is where the `swap_mount` Hermes config option should point.
 
-5. When your finished using the hierarchy just run
+6. When your finished using the hierarchy just run
 
 ```bash
 hierarchy_down
@@ -96,7 +96,7 @@ single_pfs_up
    `TroveSyncData=on`. This will force each write to the device (similar to
    `fsync`) instead of buffering it. It is off by default.
 
-5. To properly shut everything down, run
+3. To properly shut everything down, run
 
 ```bash
 single_pfs_down
