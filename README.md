@@ -85,7 +85,8 @@ If you don't need a whole hierarchy, you can start a single PFS as follows.
 
 1. Follow steps 1-4 above for preparing a hierarchy.
 
-2. Prep directories, create an OrangeFS config, start the servers and clients
+2. Run the command that will prep directories, create an OrangeFS config, start
+   the servers, and start the clients
 
 ```bash
 single_pfs_up
