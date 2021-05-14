@@ -1,9 +1,11 @@
 # Bring up a storage hierarchy on Ares
 
-1. Set an environment variable to point to this repo
+1. Set up environment variables to point to this repo and the OrangeFS module
 
 ```bash
 export PFS_SCRIPTS_DIR=<path_to>/ares_ofs
+export ORANGEFS_PATH=/opt/ohpc/pub/orangefs
+export ORANGEFS_KO=${ORANGEFS_PATH}/lib/modules/3.10.0-862.el7.x86_64/kernel/fs/pvfs2/pvfs2.ko
 ```
 
 2. Copy `node_names/client_nodes` and `node_names/server_nodes` to the top
