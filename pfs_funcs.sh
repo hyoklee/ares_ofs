@@ -31,11 +31,12 @@ function pfs_down() {
 function bb_up() {
     pushd ${PFS_SCRIPTS_DIR}
 
-    TMPFS_SIZE=25g ./make_tmpfs.sh
+    # TMPFS_SIZE=25g ./make_tmpfs.sh
 
     local server_nodes_file=bb_server_nodes
     local conf_filename=bb.conf
-    local pfs_path_base=/dev/shm
+    # local pfs_path_base=/dev/shm
+    local pfs_path_base=/mnt/nvme
     local pfs_dir=bb
     local port=3335
     local file_system_name=ofs_bb
@@ -66,7 +67,8 @@ function bb_down() {
     pushd ${PFS_SCRIPTS_DIR}
 
     local server_nodes_file=bb_server_nodes
-    local pfs_path_base=/dev/shm
+    # local pfs_path_base=/dev/shm
+    local pfs_path_base=/mnt/nvme
     local pfs_dir=bb
 
     SERVER_NODES_FILE=${server_nodes_file} \
@@ -74,7 +76,7 @@ function bb_down() {
       PFS_DIR=${pfs_dir}                   \
       ./stop_servers.sh
 
-    ./kill_tmpfs.sh
+    # ./kill_tmpfs.sh
     popd
 }
 
