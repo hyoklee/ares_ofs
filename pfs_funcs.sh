@@ -85,8 +85,8 @@ function hierarchy_up() {
     ./prep_client_dirs.sh
     popd
 
-    pfs_up ${1+sync}
-    bb_up ${1+sync}
+    pfs_up ${1:+sync}
+    bb_up ${1:+sync}
 }
 
 function hierarchy_down() {
