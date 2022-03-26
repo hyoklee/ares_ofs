@@ -24,13 +24,14 @@ fi
 mpirun -n 2 -ppn 1 hostname
 [ ! -d "ares_ofs" ] && git clone https://github.com/ChristopherHogan/ares_ofs
 
+
 # Generate client and server list files.
 NND=ares_ofs/node_names
 ls $NND
 [ ! -f "$NND/server_nodes-" ] && cp $NND/server_nodes $NND/server_nodes-
 [ ! -f "$NND/client_nodes-" ] && cp $NND/client_nodes $NND/client_nodes-
 mpirun -n 2 -ppn 1 hostname > $NND/client_nodes
-sed -e 's/$/-g40/' -i $NND/client_nodes
+sed -e 's/$/-40g/' -i $NND/client_nodes
 cat $NND/client_nodes
 
 START=`squeue | grep storage | cut -d ']' -f 1 | cut -d '[' -f 2 | cut -d '-' -f 1`
@@ -41,3 +42,12 @@ for n in $(seq $START $STOP) ; do
     echo 'ares-stor-'$i >> $NND/server_nodes
 done
 cat $NND/server_nodes
+
+export PFS_SCRIPTS_DIR=$HOME/ares_ofs
+echo $PFS_SCRIPTS_DIR
+cp $NND/client_nodes $PFS_SCRIPTS_DIR/client_nodes
+cp $NND/server_nodes $PFS_SCRIPTS_DIR/pfs_server_nodes
+export ORANGEFS_PATH=/opt/ohpc/pub/orangefs
+export ORANGEFS_KO=${ORANGEFS_PATH}/lib/modules/3.10.0-862.el7.x86_64/kernel/fs/pvfs2/pvfs2.ko
+. ${PFS_SCRIPTS_DIR}/pfs_funcs.sh
+hierarchy_up
