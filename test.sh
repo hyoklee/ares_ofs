@@ -51,3 +51,4 @@ export ORANGEFS_PATH=/opt/ohpc/pub/orangefs
 export ORANGEFS_KO=${ORANGEFS_PATH}/lib/modules/3.10.0-862.el7.x86_64/kernel/fs/pvfs2/pvfs2.ko
 . ${PFS_SCRIPTS_DIR}/pfs_funcs.sh
 hierarchy_up
+mpirun -n 4 -ppn 2 $HOME/install/bin/end_to_end_test $HOME/hermes/test/data/ares.conf 
